@@ -19,8 +19,8 @@
             --purple-glow: rgba(157, 78, 221, 0.35);
             --neon-cyan: #00f2fe;
             --cyan-glow: rgba(0, 242, 254, 0.35);
-            --dark-bg: #07040b;
-            --panel-bg: rgba(16, 10, 26, 0.78);
+            --dark-bg: #060309;
+            --panel-bg: rgba(15, 9, 24, 0.85);
             --border-glow: rgba(255, 106, 0, 0.25);
             --border-subtle: rgba(255, 255, 255, 0.08);
             --text-main: #f5f3f7;
@@ -41,10 +41,9 @@
         body {
             background-color: var(--dark-bg);
             background-image: 
-                radial-gradient(circle at 15% 10%, rgba(157, 78, 221, 0.16), transparent 45%),
-                radial-gradient(circle at 85% 85%, rgba(255, 106, 0, 0.13), transparent 50%),
-                radial-gradient(circle at 50% 50%, rgba(0, 242, 254, 0.03), transparent 70%),
-                linear-gradient(180deg, #050308 0%, #0d0816 100%);
+                radial-gradient(circle at 12% 10%, rgba(157, 78, 221, 0.15), transparent 45%),
+                radial-gradient(circle at 88% 85%, rgba(255, 106, 0, 0.12), transparent 50%),
+                linear-gradient(180deg, #040207 0%, #0c0714 100%);
             color: var(--text-main);
             font-family: var(--font-family);
             min-height: 100vh;
@@ -53,9 +52,8 @@
             overflow-x: hidden;
         }
 
-        /* Vlastný scrollbar */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #08050e; }
+        ::-webkit-scrollbar { width: 7px; }
+        ::-webkit-scrollbar-track { background: #060309; }
         ::-webkit-scrollbar-thumb { background: #26163b; border-radius: 4px; border: 1px solid var(--border-subtle); }
         ::-webkit-scrollbar-thumb:hover { background: var(--pumpkin); }
 
@@ -64,8 +62,8 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 16px 42px;
-            background: linear-gradient(180deg, rgba(7, 4, 11, 0.94) 0%, rgba(7, 4, 11, 0.6) 80%, transparent 100%);
+            padding: 14px 38px;
+            background: linear-gradient(180deg, rgba(6, 3, 9, 0.95) 0%, rgba(6, 3, 9, 0.7) 80%, transparent 100%);
             position: fixed;
             top: 0;
             left: 0;
@@ -78,12 +76,12 @@
         .brand-logo {
             font-size: 24px;
             font-weight: 900;
-            letter-spacing: 3.5px;
+            letter-spacing: 3px;
             text-transform: uppercase;
             background: linear-gradient(90deg, #ff6a00 0%, #ff2a5f 50%, #9d4edd 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 30px rgba(255, 106, 0, 0.45);
+            text-shadow: 0 0 25px rgba(255, 106, 0, 0.45);
             display: flex;
             align-items: center;
             gap: 10px;
@@ -101,7 +99,7 @@
 
         @keyframes pulse-pump {
             0%, 100% { transform: rotate(-3deg) scale(1); }
-            50% { transform: rotate(3deg) scale(1.1); }
+            50% { transform: rotate(3deg) scale(1.08); }
         }
 
         .nav-actions {
@@ -123,14 +121,14 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
-            backdrop-filter: blur(10px);
+            transition: all 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+            backdrop-filter: blur(8px);
         }
 
         .btn:hover {
-            background: rgba(255, 106, 0, 0.18);
+            background: rgba(255, 106, 0, 0.2);
             border-color: var(--pumpkin);
-            box-shadow: 0 0 20px var(--pumpkin-glow);
+            box-shadow: 0 0 18px var(--pumpkin-glow);
             transform: translateY(-2px);
             color: #fff;
         }
@@ -142,12 +140,11 @@
         .btn-purple:hover {
             background: rgba(157, 78, 221, 0.35);
             border-color: var(--witch-purple);
-            box-shadow: 0 0 20px var(--purple-glow);
+            box-shadow: 0 0 18px var(--purple-glow);
         }
 
-        /* --- LIMIT INDICATOR BADGE --- */
         .limit-badge {
-            background: rgba(18, 11, 28, 0.7);
+            background: rgba(16, 9, 26, 0.75);
             border: 1px solid rgba(255, 106, 0, 0.3);
             padding: 7px 15px;
             border-radius: 30px;
@@ -155,8 +152,7 @@
             align-items: center;
             gap: 9px;
             font-size: 12.5px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(8px);
         }
 
         .limit-dot {
@@ -164,7 +160,7 @@
             height: 8px;
             background: var(--pumpkin);
             border-radius: 50%;
-            box-shadow: 0 0 10px var(--pumpkin);
+            box-shadow: 0 0 8px var(--pumpkin);
             animation: pulse-dot 1.8s infinite;
         }
 
@@ -173,33 +169,37 @@
             50% { transform: scale(1.35); opacity: 0.55; }
         }
 
-        /* --- HLAVNÝ VIDEO KONTAJNER --- */
+        /* --- PREHRÁVAČ S HARDVÉROVOU AKCELERÁCIOU (ZERO-LAG) --- */
         .player-wrapper {
-            margin: 90px auto 30px auto;
-            width: 94%;
-            max-width: 1420px;
-            height: 74vh;
+            margin: 86px auto 25px auto;
+            width: 95%;
+            max-width: 1440px;
+            height: 75vh;
             min-height: 500px;
-            background: #020104;
+            background: #000;
             border-radius: 20px;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.9), 0 0 40px rgba(157, 78, 221, 0.2);
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.95), 0 0 40px rgba(157, 78, 221, 0.18);
             border: 1px solid rgba(255, 106, 0, 0.22);
             display: flex;
             align-items: center;
             justify-content: center;
+            contain: paint;
         }
 
+        /* Hardvérová GPU kompozícia bez lagov */
         video {
             width: 100%;
             height: 100%;
             object-fit: contain;
             background: #000;
-            transition: filter 0.3s ease;
+            transform: translateZ(0);
+            backface-visibility: hidden;
+            will-change: transform;
         }
 
-        /* --- DROP / PLACEHOLDER SCREEN --- */
+        /* Placeholder */
         .empty-placeholder {
             position: absolute;
             inset: 0;
@@ -207,33 +207,32 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            gap: 20px;
-            background: radial-gradient(circle at center, rgba(32, 14, 52, 0.92) 0%, rgba(7, 4, 11, 0.98) 75%);
+            gap: 18px;
+            background: radial-gradient(circle at center, rgba(30, 13, 50, 0.95) 0%, rgba(6, 3, 9, 0.98) 75%);
             z-index: 5;
             text-align: center;
             padding: 30px;
             cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+            transition: all 0.25s ease;
         }
 
         .empty-placeholder.dragover {
             border: 2px dashed var(--pumpkin);
-            background: rgba(255, 106, 0, 0.12);
-            transform: scale(0.995);
+            background: rgba(255, 106, 0, 0.15);
         }
 
         .ghost-icon {
-            font-size: 74px;
-            filter: drop-shadow(0 0 25px var(--pumpkin-glow));
+            font-size: 72px;
+            filter: drop-shadow(0 0 22px var(--pumpkin-glow));
             animation: float-ghost 3.5s ease-in-out infinite;
         }
 
         @keyframes float-ghost {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-14px); }
+            50% { transform: translateY(-12px); }
         }
 
-        /* --- ŽIVÉ TITULKY (LIVE CAPTIONS & GOOGLE TRANSLATE) --- */
+        /* --- ŽIVÉ TITULKY (OPTIMALIZOVANÉ) --- */
         .live-captions-overlay {
             position: absolute;
             bottom: 86px;
@@ -247,25 +246,22 @@
         }
 
         .player-wrapper.show-controls .live-captions-overlay {
-            bottom: 108px;
+            bottom: 106px;
         }
 
         .live-caption-box {
             display: inline-block;
             max-width: 82%;
-            background: rgba(8, 4, 14, 0.88);
-            backdrop-filter: blur(12px);
+            background: rgba(7, 4, 12, 0.9);
             border: 1px solid rgba(255, 106, 0, 0.35);
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.7), 0 0 20px rgba(157, 78, 221, 0.3);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.8), 0 0 20px rgba(157, 78, 221, 0.25);
             border-radius: 12px;
-            padding: 10px 22px;
+            padding: 9px 22px;
             color: #ffffff;
             font-size: 20px;
             font-weight: 600;
             line-height: 1.45;
             text-shadow: 0 2px 4px rgba(0,0,0,0.8);
-            letter-spacing: 0.3px;
-            transition: all 0.2s ease;
             position: relative;
         }
 
@@ -298,21 +294,21 @@
             padding-top: 4px;
         }
 
-        /* --- VLASTNÉ NETFLIX OVLÁDANIE --- */
+        /* --- OVLÁDANIE --- */
         .custom-controls {
             position: absolute;
             bottom: 0;
             left: 0;
             right: 0;
-            background: linear-gradient(0deg, rgba(6, 3, 10, 0.98) 0%, rgba(6, 3, 10, 0.7) 60%, transparent 100%);
-            padding: 24px 32px 18px 32px;
+            background: linear-gradient(0deg, rgba(5, 2, 8, 0.98) 0%, rgba(5, 2, 8, 0.65) 60%, transparent 100%);
+            padding: 24px 30px 16px 30px;
             display: flex;
             flex-direction: column;
             gap: 12px;
             z-index: 30;
             opacity: 0;
             pointer-events: none;
-            transition: opacity 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+            transition: opacity 0.25s ease;
         }
 
         .player-wrapper.show-controls .custom-controls,
@@ -321,7 +317,7 @@
             pointer-events: auto;
         }
 
-        /* Časová os (Progress Bar) */
+        /* Časová os */
         .timeline-container {
             width: 100%;
             height: 18px;
@@ -337,8 +333,7 @@
             background: rgba(255, 255, 255, 0.18);
             border-radius: 6px;
             position: relative;
-            overflow: visible;
-            transition: height 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+            transition: height 0.15s ease;
         }
 
         .timeline-container:hover .timeline-bar {
@@ -352,7 +347,7 @@
             bottom: 0;
             width: 0%;
             background: linear-gradient(90deg, var(--witch-purple) 0%, var(--pumpkin) 100%);
-            box-shadow: 0 0 16px var(--pumpkin-glow);
+            box-shadow: 0 0 14px var(--pumpkin-glow);
             border-radius: 6px;
         }
 
@@ -361,19 +356,18 @@
             right: -7px;
             top: 50%;
             transform: translateY(-50%) scale(0);
-            width: 15px;
-            height: 15px;
+            width: 14px;
+            height: 14px;
             background: #ffffff;
             border-radius: 50%;
-            box-shadow: 0 0 12px var(--pumpkin);
-            transition: transform 0.15s cubic-bezier(0.2, 0.8, 0.2, 1);
+            box-shadow: 0 0 10px var(--pumpkin);
+            transition: transform 0.15s ease;
         }
 
         .timeline-container:hover .timeline-thumb {
             transform: translateY(-50%) scale(1);
         }
 
-        /* Tlačidlá a spodný panel */
         .controls-row {
             display: flex;
             align-items: center;
@@ -383,7 +377,7 @@
         .left-controls, .right-controls {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 13px;
         }
 
         .control-btn {
@@ -398,15 +392,14 @@
             width: 38px;
             height: 38px;
             border-radius: 50%;
-            transition: all 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+            transition: all 0.2s ease;
             position: relative;
         }
 
         .control-btn:hover {
             color: var(--pumpkin);
-            background: rgba(255, 106, 0, 0.15);
+            background: rgba(255, 106, 0, 0.16);
             transform: scale(1.12);
-            text-shadow: 0 0 12px var(--pumpkin);
         }
 
         .control-btn.active {
@@ -435,7 +428,6 @@
             border-radius: 4px;
             outline: none;
             cursor: pointer;
-            transition: all 0.2s;
         }
 
         .volume-slider::-webkit-slider-thumb {
@@ -461,48 +453,63 @@
             font-weight: 600;
         }
 
-        /* --- AUDIO LIVE FREQUENCY METER --- */
+        /* Ľahký spektrálny meter */
         .audio-activity-meter {
             display: inline-flex;
             align-items: flex-end;
             gap: 2px;
-            height: 15px;
-            padding: 0 4px;
+            height: 14px;
+            padding: 0 3px;
         }
         .audio-bar {
             width: 3px;
-            height: 4px;
+            height: 3px;
             background: var(--pumpkin);
             border-radius: 2px;
-            transition: height 0.08s ease;
+            transition: height 0.05s ease;
+        }
+
+        /* Zvýraznenie stavu slúchadiel */
+        .headphone-badge {
+            background: rgba(0, 242, 254, 0.15);
+            border: 1px solid rgba(0, 242, 254, 0.35);
+            color: var(--neon-cyan);
+            font-size: 11px;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .headphone-badge:hover {
+            background: rgba(0, 242, 254, 0.3);
+            box-shadow: 0 0 10px var(--cyan-glow);
         }
 
         /* --- SETTINGS MENU --- */
         .settings-menu {
             position: absolute;
-            bottom: 78px;
+            bottom: 76px;
             right: 28px;
             background: var(--panel-bg);
-            backdrop-filter: blur(20px);
+            backdrop-filter: blur(16px);
             border: 1px solid var(--border-glow);
-            box-shadow: 0 15px 45px rgba(0,0,0,0.85), 0 0 25px var(--purple-glow);
+            box-shadow: 0 15px 45px rgba(0,0,0,0.85);
             border-radius: 16px;
-            padding: 18px 20px;
+            padding: 16px 18px;
             display: none;
             flex-direction: column;
-            gap: 14px;
-            min-width: 250px;
+            gap: 13px;
+            min-width: 270px;
             z-index: 40;
         }
 
         .settings-menu.active {
             display: flex;
-            animation: fadeInMenu 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
-        }
-
-        @keyframes fadeInMenu {
-            from { opacity: 0; transform: translateY(8px); }
-            to { opacity: 1; transform: translateY(0); }
         }
 
         .settings-menu h4 {
@@ -531,7 +538,7 @@
         }
 
         .settings-option select {
-            background: rgba(0, 0, 0, 0.6);
+            background: rgba(0, 0, 0, 0.65);
             color: #fff;
             border: 1px solid rgba(255, 255, 255, 0.16);
             padding: 5px 10px;
@@ -539,15 +546,14 @@
             outline: none;
             cursor: pointer;
             font-family: var(--font-family);
-            font-size: 12.5px;
-            transition: border 0.2s;
+            font-size: 12px;
         }
 
         .settings-option select:focus {
             border-color: var(--pumpkin);
         }
 
-        /* --- MODAL DIALOGY (LIMIT, URL, UNLOCK, TITULKY) --- */
+        /* --- MODAL DIALOGY --- */
         .modal-overlay {
             position: fixed;
             inset: 0;
@@ -559,7 +565,7 @@
             z-index: 1000;
             opacity: 0;
             pointer-events: none;
-            transition: opacity 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+            transition: opacity 0.2s ease;
         }
 
         .modal-overlay.active {
@@ -568,29 +574,22 @@
         }
 
         .modal-card {
-            background: linear-gradient(155deg, rgba(28, 15, 45, 0.95) 0%, rgba(12, 7, 20, 0.98) 100%);
+            background: linear-gradient(155deg, rgba(26, 14, 42, 0.96) 0%, rgba(10, 6, 18, 0.98) 100%);
             border: 1px solid var(--pumpkin);
-            box-shadow: 0 0 50px var(--pumpkin-glow);
+            box-shadow: 0 0 45px var(--pumpkin-glow);
             width: 90%;
-            max-width: 500px;
-            padding: 34px;
-            border-radius: 22px;
+            max-width: 490px;
+            padding: 32px;
+            border-radius: 20px;
             text-align: center;
             position: relative;
-            transform: scale(0.92);
-            transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
-        }
-
-        .modal-overlay.active .modal-card {
-            transform: scale(1);
         }
 
         .modal-card h2 {
-            font-size: 24px;
+            font-size: 23px;
             font-weight: 800;
             margin-bottom: 10px;
             color: #fff;
-            text-shadow: 0 0 15px var(--pumpkin);
         }
 
         .modal-card p {
@@ -603,37 +602,28 @@
         .modal-card input[type="text"],
         .modal-card input[type="number"] {
             width: 100%;
-            padding: 13px 18px;
+            padding: 12px 16px;
             background: rgba(0, 0, 0, 0.65);
             border: 1px solid rgba(255, 106, 0, 0.35);
             border-radius: 10px;
             color: #fff;
             font-size: 14px;
             outline: none;
-            margin-bottom: 18px;
+            margin-bottom: 16px;
             text-align: center;
-            letter-spacing: 0.5px;
             font-family: var(--font-family);
-            transition: border 0.2s, box-shadow 0.2s;
-        }
-
-        .modal-card input:focus {
-            border-color: var(--pumpkin);
-            box-shadow: 0 0 16px var(--pumpkin-glow);
         }
 
         .close-modal-btn {
             position: absolute;
-            top: 16px;
-            right: 20px;
+            top: 15px;
+            right: 18px;
             background: none;
             border: none;
             color: var(--text-dim);
-            font-size: 24px;
+            font-size: 22px;
             cursor: pointer;
-            transition: color 0.2s;
         }
-        .close-modal-btn:hover { color: #fff; }
 
         #file-input, #sub-file-input { display: none; }
 
@@ -645,7 +635,6 @@
             font-size: 11px;
             font-weight: 800;
             letter-spacing: 1.2px;
-            box-shadow: 0 0 15px rgba(255, 106, 0, 0.4);
             display: inline-flex;
             align-items: center;
             gap: 6px;
@@ -653,8 +642,7 @@
 
         .google-brand {
             display: inline-flex;
-            align-items: center;
-            gap: 4px;
+            gap: 2px;
             font-weight: 700;
             background: linear-gradient(90deg, #4285F4, #EA4335, #FBBC05, #34A853);
             -webkit-background-clip: text;
@@ -690,9 +678,9 @@
 
     <!-- PREHRÁVAČ -->
     <div class="player-wrapper" id="player-wrapper">
-        <video id="main-video" playsinline crossorigin="anonymous"></video>
+        <video id="main-video" playsinline preload="auto"></video>
 
-        <!-- ŽIVÉ TITULKY ZOBRAZOVACÍ HUD (GOOGLE PREKLADAČ SYSTÉM) -->
+        <!-- ŽIVÉ TITULKY ZOBRAZOVACÍ HUD -->
         <div class="live-captions-overlay" id="live-captions-overlay">
             <div class="live-caption-box" id="live-caption-box">
                 <div class="caption-source-badge">
@@ -709,11 +697,11 @@
         <div class="empty-placeholder" id="empty-placeholder" onclick="document.getElementById('file-input').click()">
             <div class="ghost-icon">👻</div>
             <h2 style="font-weight: 800; letter-spacing: 0.8px; font-size: 24px;">Presuň sem film alebo klikni a vyber súbor</h2>
-            <p style="color: var(--text-dim); max-width: 480px; font-size: 13.5px;">
-                Súbory sa prehrávajú priamo z tvojho PC. Systém obsahuje <strong>vstavané Živé Titulky Google</strong>, ktoré snímajú priamo zvuk a stopy zo súboru bez potreby tvojho mikrofónu.
+            <p style="color: var(--text-dim); max-width: 500px; font-size: 13.5px;">
+                Optimalizované pre <strong>100% plynulé prehrávanie bez lagov</strong> cez hardvérovú GPU akceleráciu. Obsahuje <strong>zvukový ekvalizér pre slúchadlá</strong> a Živé Titulky Google.
             </p>
             <div class="pumpkin-badge">
-                <span>🎃</span> HALLOWEEN LIVE-SUBTITLES // 4K 60FPS READY
+                <span>⚡ ZERO-LAG GPU ENGINE</span> // 4K 60FPS
             </div>
         </div>
 
@@ -735,10 +723,10 @@
                         <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                     </button>
                     <!-- +/- 10s -->
-                    <button class="control-btn" id="backward-btn" title="Dozadu 10s (Šípka doľava)">
+                    <button class="control-btn" id="backward-btn" title="Dozadu 10s">
                         <svg viewBox="0 0 24 24"><path d="M12.5 8c-2.65 0-5.05 1-6.9 2.6L2 7v9h9l-3.62-3.62c1.39-1.16 3.16-1.88 5.12-1.88 3.54 0 6.55 2.31 7.6 5.5l2.37-.78C21.08 11.03 17.15 8 12.5 8z"/></svg>
                     </button>
-                    <button class="control-btn" id="forward-btn" title="Dopredu 10s (Šípka doprava)">
+                    <button class="control-btn" id="forward-btn" title="Dopredu 10s">
                         <svg viewBox="0 0 24 24"><path d="M11.5 8c2.65 0 5.05 1 6.9 2.6L22 7v9h-9l3.62-3.62c-1.39-1.16-3.16-1.88-5.12-1.88-3.54 0-6.55 2.31-7.6 5.5l-2.37-.78C2.92 11.03 6.85 8 11.5 8z"/></svg>
                     </button>
                     
@@ -755,8 +743,13 @@
                         <span class="current-time" id="current-time">00:00</span> / <span id="duration-time">00:00</span>
                     </div>
 
-                    <!-- Audio Frequency Indicator (z interného súboru videa) -->
-                    <div class="audio-activity-meter" id="audio-activity-meter" title="Snímanie interného audia zo súboru">
+                    <!-- Prepínač Zvuku Slúchadiel priamo na paneli -->
+                    <div class="headphone-badge" id="headphone-quick-btn" title="Klikni pre prepnutie režimu zvuku pre slúchadlá">
+                        🎧 <span id="headphone-status-text">Voice Boost: VYP</span>
+                    </div>
+
+                    <!-- Audio Frequency Indicator -->
+                    <div class="audio-activity-meter" id="audio-activity-meter" title="Snímanie interného audia">
                         <div class="audio-bar" id="bar1"></div>
                         <div class="audio-bar" id="bar2"></div>
                         <div class="audio-bar" id="bar3"></div>
@@ -776,7 +769,7 @@
                     <button class="control-btn" id="pip-btn" title="Obraz v obraze (PiP)">
                         <svg viewBox="0 0 24 24"><path d="M19 7h-8v6h8V7zm2-4H3c-1.1 0-2 .9-2 2v14c0 1.1.9 1.98 2 1.98h18c1.1 0 2-.88 2-1.98V5c0-1.1-.9-2-2-2zm0 16.01H3V4.98h18v14.03z"/></svg>
                     </button>
-                    <button class="control-btn" id="settings-btn" title="Nastavenia prehrávača a prekladača">
+                    <button class="control-btn" id="settings-btn" title="Nastavenia prehrávača a zvuku">
                         <svg viewBox="0 0 24 24"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg>
                     </button>
                     <button class="control-btn" id="fullscreen-btn" title="Celá obrazovka (F)">
@@ -788,10 +781,21 @@
             <!-- Nastavenia Menu -->
             <div class="settings-menu" id="settings-menu">
                 <h4>
-                    <span>Nastavenia & Preklad</span>
-                    <span style="font-size: 10px; color: var(--neon-cyan);">LIVE AI</span>
+                    <span>Zvuk & Titulky</span>
+                    <span style="font-size: 10px; color: var(--neon-cyan);">STUDIO DSP</span>
                 </h4>
                 
+                <!-- Zvukový procesor pre slúchadlá -->
+                <div class="settings-option">
+                    <span>Zvuk na slúchadlách:</span>
+                    <select id="audio-mode-select">
+                        <option value="off">Pôvodný čistý zvuk</option>
+                        <option value="voice" selected>🎧 Hlasy (Voice Clarity)</option>
+                        <option value="night">🌙 Nočné kino (Vyrovnanie)</option>
+                        <option value="boost">🚀 Zosilnenie 200%</option>
+                    </select>
+                </div>
+
                 <div class="settings-option">
                     <span>Google Jazyk:</span>
                     <select id="caption-target-lang">
@@ -809,7 +813,7 @@
                     <select id="caption-size-select">
                         <option value="16px">Malé (16px)</option>
                         <option value="20px" selected>Štandardné (20px)</option>
-                        <option value="25px">Veľké (25px)</option>
+                        <option value="24px">Veľké (24px)</option>
                     </select>
                 </div>
 
@@ -835,10 +839,9 @@
                 <div class="settings-option">
                     <span>Halloween Filter:</span>
                     <select id="filter-select">
-                        <option value="none" selected>Žiadny</option>
+                        <option value="none" selected>Žiadny (Plynulý)</option>
                         <option value="spooky">Neónový Kontrast</option>
                         <option value="dark">Temné Kino</option>
-                        <option value="cyber">Cyber Glow</option>
                     </select>
                 </div>
             </div>
@@ -849,11 +852,11 @@
     <div class="modal-overlay" id="limit-modal">
         <div class="modal-card">
             <button class="close-modal-btn" onclick="closeModal('limit-modal')">&times;</button>
-            <div style="font-size: 45px; margin-bottom: 12px; filter: drop-shadow(0 0 15px var(--danger));">⚠️</div>
+            <div style="font-size: 42px; margin-bottom: 12px; filter: drop-shadow(0 0 12px var(--danger));">⚠️</div>
             <h2>Limit Prehrávania Dosiahnutý</h2>
             <p>
                 Dosiahol si bezpečnostný limit <strong>10 filmov za 24 hodín</strong>.<br>
-                Tento limit chráni systém pred preťažením grafickej pamäte a cache pamäte prehliadača.
+                Tento limit chráni pamäť pred preťažením.
             </p>
             <p style="color: var(--pumpkin); font-weight: 600;">
                 Pre navýšenie limitu zadaj svoj vlastný 30-miestny bezpečnostný kód.
@@ -868,17 +871,17 @@
     <div class="modal-overlay" id="key-modal">
         <div class="modal-card">
             <button class="close-modal-btn" onclick="closeModal('key-modal')">&times;</button>
-            <div style="font-size: 40px; margin-bottom: 12px;">🎃</div>
+            <div style="font-size: 38px; margin-bottom: 10px;">🎃</div>
             <h2>Odomknutie Vlastného Limitu</h2>
             <p>Vymysli si vlastný <strong>30-miestny kód</strong> alebo stlač generovať:</p>
             
             <input type="text" id="custom-key-input" maxlength="30" placeholder="Zadaj presne 30-miestny kód..." style="font-family: var(--font-mono);">
             
-            <button class="btn" style="margin-bottom: 16px; font-size: 11.5px; width: 100%; justify-content: center;" onclick="generateKey()">
+            <button class="btn" style="margin-bottom: 15px; font-size: 11.5px; width: 100%; justify-content: center;" onclick="generateKey()">
                 ⚡ Vygenerovať bezpečný 30-miestny kód
             </button>
 
-            <div style="margin: 10px 0 18px 0; text-align: left;">
+            <div style="margin: 10px 0 16px 0; text-align: left;">
                 <label style="font-size: 13px; color: var(--text-dim); display:block; margin-bottom: 6px;">
                     Zvoľ si nový limit videí:
                 </label>
@@ -895,7 +898,7 @@
     <div class="modal-overlay" id="url-modal">
         <div class="modal-card">
             <button class="close-modal-btn" onclick="closeModal('url-modal')">&times;</button>
-            <div style="font-size: 40px; margin-bottom: 12px;">🌐</div>
+            <div style="font-size: 38px; margin-bottom: 10px;">🌐</div>
             <h2>Streamovať z URL</h2>
             <p>Vlož priamy odkaz na video súbor (.mp4, .webm, stream .m3u8):</p>
             
@@ -1007,12 +1010,161 @@
         }
 
         /* ==========================================================
-           ŽIVÉ TITULKY + GOOGLE PREKLADAČ (INTERNÉ AUDIO ZO SÚBORU)
+           AUDIO PROCESOR PRE SLÚCHADLÁ & PROTI LAGOM (WEB AUDIO DSP)
+        ========================================================== */
+        let audioCtx = null;
+        let sourceNode = null;
+        let voiceFilter = null;
+        let bassFilter = null;
+        let compressor = null;
+        let gainNode = null;
+        let analyser = null;
+        let currentAudioMode = 'voice';
+
+        const audioModeSelect = document.getElementById('audio-mode-select');
+        const headphoneStatusText = document.getElementById('headphone-status-text');
+        const headphoneQuickBtn = document.getElementById('headphone-quick-btn');
+
+        function initAudioPipeline() {
+            if (audioCtx) {
+                if (audioCtx.state === 'suspended') audioCtx.resume();
+                return;
+            }
+
+            try {
+                const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+                audioCtx = new AudioContextClass();
+
+                // Zdroj zvuku z videa
+                sourceNode = audioCtx.createMediaElementSource(video);
+
+                // 1. Filter pre vytiahnutie ľudskej reči (1800 Hz až 3200 Hz)
+                voiceFilter = audioCtx.createBiquadFilter();
+                voiceFilter.type = 'peaking';
+                voiceFilter.frequency.value = 2500;
+                voiceFilter.Q.value = 1.3;
+                voiceFilter.gain.value = 7.5; // +7.5 dB pre jasné dialógy
+
+                // 2. Filter pre skrotenie nepríjemného dunenia na slúchadlách
+                bassFilter = audioCtx.createBiquadFilter();
+                bassFilter.type = 'lowshelf';
+                bassFilter.frequency.value = 200;
+                bassFilter.gain.value = -3.5;
+
+                // 3. Dynamický kompresor (nočné kino - zrovná výbuchy a tichý šepot)
+                compressor = audioCtx.createDynamicsCompressor();
+                compressor.threshold.value = -24;
+                compressor.knee.value = 25;
+                compressor.ratio.value = 8;
+                compressor.attack.value = 0.003;
+                compressor.release.value = 0.25;
+
+                // 4. Zosilnenie
+                gainNode = audioCtx.createGain();
+                gainNode.gain.value = 1.0;
+
+                // 5. Ľahký analyzér spektra
+                analyser = audioCtx.createAnalyser();
+                analyser.fftSize = 32;
+
+                // Prepojenie reťazca
+                sourceNode.connect(voiceFilter);
+                voiceFilter.connect(bassFilter);
+                bassFilter.connect(compressor);
+                compressor.connect(gainNode);
+                gainNode.connect(analyser);
+                analyser.connect(audioCtx.destination);
+
+                applyAudioMode(currentAudioMode);
+                startThrottledVisualizer();
+            } catch (err) {
+                console.warn('Audio DSP pripojenie upozornenie:', err);
+            }
+        }
+
+        function applyAudioMode(mode) {
+            currentAudioMode = mode;
+            audioModeSelect.value = mode;
+
+            if (!voiceFilter || !gainNode) return;
+
+            if (mode === 'voice') {
+                // Hlasy v slúchadlách
+                voiceFilter.gain.value = 8.5;
+                bassFilter.gain.value = -4.0;
+                gainNode.gain.value = 1.15;
+                headphoneStatusText.innerText = 'Voice Boost: ZAP';
+                headphoneQuickBtn.style.borderColor = 'var(--neon-cyan)';
+            } else if (mode === 'night') {
+                // Nočné kino
+                voiceFilter.gain.value = 4.0;
+                bassFilter.gain.value = -6.0;
+                gainNode.gain.value = 1.0;
+                headphoneStatusText.innerText = 'Nočné Kino';
+                headphoneQuickBtn.style.borderColor = 'var(--witch-purple)';
+            } else if (mode === 'boost') {
+                // 200% Extra
+                voiceFilter.gain.value = 2.0;
+                bassFilter.gain.value = 0;
+                gainNode.gain.value = 2.0;
+                headphoneStatusText.innerText = 'Boost: 200%';
+                headphoneQuickBtn.style.borderColor = 'var(--pumpkin)';
+            } else {
+                // Vypnuté / Pôvodný
+                voiceFilter.gain.value = 0;
+                bassFilter.gain.value = 0;
+                gainNode.gain.value = 1.0;
+                headphoneStatusText.innerText = 'Voice Boost: VYP';
+                headphoneQuickBtn.style.borderColor = 'rgba(0, 242, 254, 0.35)';
+            }
+        }
+
+        audioModeSelect.addEventListener('change', (e) => applyAudioMode(e.target.value));
+        
+        // Rýchly prepínač kliknutím na badge
+        headphoneQuickBtn.addEventListener('click', () => {
+            initAudioPipeline();
+            const modes = ['voice', 'night', 'boost', 'off'];
+            const nextIdx = (modes.indexOf(currentAudioMode) + 1) % modes.length;
+            applyAudioMode(modes[nextIdx]);
+        });
+
+        // Ľahký vizualizér (iba 25 fps, aby neuberal výkon z 4K 60FPS videa)
+        let lastMeterTime = 0;
+        function startThrottledVisualizer() {
+            const dataArray = new Uint8Array(analyser.frequencyBinCount);
+            const bars = [
+                document.getElementById('bar1'),
+                document.getElementById('bar2'),
+                document.getElementById('bar3'),
+                document.getElementById('bar4')
+            ];
+
+            function loop(now) {
+                if (now - lastMeterTime > 40) { // ~25 FPS limit
+                    lastMeterTime = now;
+                    if (!video.paused && analyser) {
+                        analyser.getByteFrequencyData(dataArray);
+                        bars[0].style.height = `${Math.max(3, (dataArray[1] / 255) * 14)}px`;
+                        bars[1].style.height = `${Math.max(3, (dataArray[3] / 255) * 14)}px`;
+                        bars[2].style.height = `${Math.max(3, (dataArray[5] / 255) * 14)}px`;
+                        bars[3].style.height = `${Math.max(3, (dataArray[7] / 255) * 14)}px`;
+                    }
+                }
+                requestAnimationFrame(loop);
+            }
+            requestAnimationFrame(loop);
+        }
+
+        /* ==========================================================
+           ŽIVÉ TITULKY + GOOGLE PREKLADAČ (OPTIMALIZOVANÉ PROTI LAGOM)
         ========================================================== */
         let captionsEnabled = false;
         let subtitleCues = [];
+        let subtitleIndex = 0; // O(1) ukazovateľ namiesto hľadania cez tisíce prvkov
         let currentTargetLang = 'sk';
         let translationCache = new Map();
+        let lastSubtitleText = '';
 
         const liveCaptionsOverlay = document.getElementById('live-captions-overlay');
         const captionTranslatedText = document.getElementById('caption-translated-text');
@@ -1024,13 +1176,12 @@
         const captionSizeSelect = document.getElementById('caption-size-select');
         const liveCaptionBox = document.getElementById('live-caption-box');
 
-        // Toggle Live Captions
         function toggleCaptions() {
             captionsEnabled = !captionsEnabled;
             if (captionsEnabled) {
                 liveCaptionsOverlay.style.display = 'block';
                 ccBtn.classList.add('active');
-                initAudioContext();
+                initAudioPipeline();
             } else {
                 liveCaptionsOverlay.style.display = 'none';
                 ccBtn.classList.remove('active');
@@ -1048,51 +1199,44 @@
             liveCaptionBox.style.fontSize = e.target.value;
         });
 
-        // Priame volanie Google Translate API v reálnom čase
         async function translateTextGoogle(text, targetLang) {
-            if (!text || text.trim() === '') return '';
-            const cacheKey = `${targetLang}_${text.trim()}`;
-            if (translationCache.has(cacheKey)) {
-                return translationCache.get(cacheKey);
-            }
+            if (!text || !text.trim()) return '';
+            const key = `${targetLang}_${text.trim()}`;
+            if (translationCache.has(key)) return translationCache.get(key);
 
             try {
                 const url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=${targetLang}&dt=t&q=${encodeURIComponent(text)}`;
-                const response = await fetch(url);
-                const data = await response.json();
+                const res = await fetch(url);
+                const data = await res.json();
                 
-                let translated = '';
+                let resText = '';
                 if (data && data[0]) {
-                    data[0].forEach(part => {
-                        if (part[0]) translated += part[0];
-                    });
+                    data[0].forEach(p => { if (p[0]) resText += p[0]; });
                 }
-                const result = translated || text;
-                translationCache.set(cacheKey, result);
-                return result;
+                const fin = resText || text;
+                translationCache.set(key, fin);
+                return fin;
             } catch (err) {
-                console.warn('Google prekladač offline / fallback:', err);
                 return text;
             }
         }
 
-        // Nahrávanie a parsovanie externých titulkov zo súboru (.srt, .vtt)
         subFileInput.addEventListener('change', (e) => {
             const file = e.target.files[0];
             if (!file) return;
 
             const reader = new FileReader();
-            reader.onload = (event) => {
-                parseSubtitleFile(event.target.result);
+            reader.onload = (evt) => {
+                parseSubtitleFile(evt.target.result);
                 if (!captionsEnabled) toggleCaptions();
-                alert(`✅ Titulky "${file.name}" boli úspešne prepojené s Google Prekladačom!`);
+                alert(`✅ Titulky načítané a prepojené s Google Prekladačom.`);
             };
             reader.readAsText(file);
         });
 
         function parseSubtitleFile(content) {
             subtitleCues = [];
-            // Normalizácia riadkov
+            subtitleIndex = 0;
             const text = content.replace(/\r\n/g, '\n').replace(/\r/g, '\n');
             const blocks = text.split('\n\n');
 
@@ -1114,6 +1258,8 @@
                     }
                 }
             });
+            // Zoradenie pre bleskové indexovanie
+            subtitleCues.sort((a, b) => a.start - b.start);
         }
 
         function timeToSeconds(timeStr) {
@@ -1126,59 +1272,8 @@
             return 0;
         }
 
-        // Web Audio API: sníma priamo audio výstup videa z vnútra súboru
-        let audioCtx = null;
-        let analyser = null;
-        let audioSourceNode = null;
-        let audioInterval = null;
-
-        function initAudioContext() {
-            if (audioCtx) {
-                if (audioCtx.state === 'suspended') audioCtx.resume();
-                return;
-            }
-            try {
-                const AudioContext = window.AudioContext || window.webkitAudioContext;
-                audioCtx = new AudioContext();
-                analyser = audioCtx.createAnalyser();
-                analyser.fftSize = 64;
-
-                // Prepojenie zvuku videa na analyzér
-                audioSourceNode = audioCtx.createMediaElementSource(video);
-                audioSourceNode.connect(analyser);
-                analyser.connect(audioCtx.destination);
-
-                startAudioAnalysis();
-            } catch (err) {
-                console.log('Audio routing inicializovaný (bez CORS reštrikcií):', err);
-            }
-        }
-
-        function startAudioAnalysis() {
-            const dataArray = new Uint8Array(analyser.frequencyBinCount);
-            const bars = [
-                document.getElementById('bar1'),
-                document.getElementById('bar2'),
-                document.getElementById('bar3'),
-                document.getElementById('bar4')
-            ];
-
-            function renderMeter() {
-                if (!video.paused && captionsEnabled && analyser) {
-                    analyser.getByteFrequencyData(dataArray);
-                    const avg = (dataArray[2] + dataArray[6] + dataArray[10] + dataArray[14]) / 4;
-                    bars[0].style.height = `${Math.max(3, (dataArray[2] / 255) * 15)}px`;
-                    bars[1].style.height = `${Math.max(3, (dataArray[6] / 255) * 15)}px`;
-                    bars[2].style.height = `${Math.max(3, (dataArray[10] / 255) * 15)}px`;
-                    bars[3].style.height = `${Math.max(3, (dataArray[14] / 255) * 15)}px`;
-                }
-                requestAnimationFrame(renderMeter);
-            }
-            renderMeter();
-        }
-
         /* ==========================================================
-           PREHRÁVAČ & OVLÁDANIE
+           PREHRÁVAČ & NULOVÝ LAG KONTROLÉR
         ========================================================== */
         const video = document.getElementById('main-video');
         const playerWrapper = document.getElementById('player-wrapper');
@@ -1198,7 +1293,7 @@
 
         let controlsTimeout;
         let hlsInstance = null;
-        let lastSubtitleText = '';
+        let activeObjectUrl = null; // Pre uvoľňovanie pamäte (Stop lagom)
 
         function hideControls() {
             if (!video.paused) {
@@ -1220,7 +1315,7 @@
 
         function togglePlay() {
             if (!video.src && !video.currentSrc) return;
-            initAudioContext();
+            initAudioPipeline();
             if (video.paused) {
                 video.play();
                 playBtn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>';
@@ -1234,9 +1329,14 @@
 
         playBtn.addEventListener('click', togglePlay);
 
-        // Posun +/- 10s
-        document.getElementById('backward-btn').addEventListener('click', () => video.currentTime -= 10);
-        document.getElementById('forward-btn').addEventListener('click', () => video.currentTime += 10);
+        document.getElementById('backward-btn').addEventListener('click', () => {
+            video.currentTime -= 10;
+            subtitleIndex = 0; // reset indexu
+        });
+        document.getElementById('forward-btn').addEventListener('click', () => {
+            video.currentTime += 10;
+            subtitleIndex = 0;
+        });
 
         function formatTime(seconds) {
             if (isNaN(seconds)) return "00:00";
@@ -1245,26 +1345,33 @@
             return `${String(min).padStart(2, '0')}:${String(sec).padStart(2, '0')}`;
         }
 
-        video.addEventListener('timeupdate', async () => {
-            const percent = (video.currentTime / video.duration) * 100;
-            timelineProgress.style.width = `${percent}%`;
-            currentTimeEl.innerText = formatTime(video.currentTime);
+        // Bleskový timeupdate bez blokovania vlákna
+        video.addEventListener('timeupdate', () => {
+            const cur = video.currentTime;
+            const dur = video.duration || 1;
+            timelineProgress.style.width = `${(cur / dur) * 100}%`;
+            currentTimeEl.innerText = formatTime(cur);
 
-            // Spracovanie živých titulkov
+            // Bleskové O(1) spracovanie titulkov
             if (captionsEnabled && subtitleCues.length > 0) {
-                const nowSec = video.currentTime;
-                const activeCue = subtitleCues.find(cue => nowSec >= cue.start && nowSec <= cue.end);
+                // Oprava indexu pri pretáčaní
+                if (subtitleIndex >= subtitleCues.length || cur < subtitleCues[subtitleIndex].start) {
+                    subtitleIndex = 0;
+                }
+                while (subtitleIndex < subtitleCues.length && cur > subtitleCues[subtitleIndex].end) {
+                    subtitleIndex++;
+                }
 
-                if (activeCue) {
-                    if (activeCue.text !== lastSubtitleText) {
-                        lastSubtitleText = activeCue.text;
-                        captionOriginalText.innerText = activeCue.text;
-                        
-                        // Okamžitý preklad cez Google
-                        const translated = await translateTextGoogle(activeCue.text, currentTargetLang);
-                        captionTranslatedText.innerText = translated;
+                const currentCue = subtitleCues[subtitleIndex];
+                if (currentCue && cur >= currentCue.start && cur <= currentCue.end) {
+                    if (currentCue.text !== lastSubtitleText) {
+                        lastSubtitleText = currentCue.text;
+                        captionOriginalText.innerText = currentCue.text;
+                        translateTextGoogle(currentCue.text, currentTargetLang).then(translated => {
+                            captionTranslatedText.innerText = translated;
+                        });
                     }
-                } else {
+                } else if (lastSubtitleText !== '') {
                     lastSubtitleText = '';
                     captionOriginalText.innerText = '';
                     captionTranslatedText.innerText = '...';
@@ -1276,11 +1383,10 @@
             durationTimeEl.innerText = formatTime(video.duration);
         });
 
-        // Kliknutie a ťahanie v časovej osi
         timelineContainer.addEventListener('click', (e) => {
             const rect = timelineContainer.getBoundingClientRect();
-            const clickPos = (e.clientX - rect.left) / rect.width;
-            video.currentTime = clickPos * video.duration;
+            video.currentTime = ((e.clientX - rect.left) / rect.width) * video.duration;
+            subtitleIndex = 0;
         });
 
         // Hlasitosť
@@ -1305,7 +1411,6 @@
             }
         }
 
-        // Fullscreen & PiP
         fullscreenBtn.addEventListener('click', () => {
             if (!document.fullscreenElement) {
                 playerWrapper.requestFullscreen().catch(err => alert(err.message));
@@ -1326,7 +1431,6 @@
             }
         });
 
-        // Nastavenia
         settingsBtn.addEventListener('click', (e) => {
             e.stopPropagation();
             settingsMenu.classList.toggle('active');
@@ -1342,44 +1446,58 @@
 
         document.getElementById('filter-select').addEventListener('change', (e) => {
             if (e.target.value === 'spooky') {
-                video.style.filter = 'contrast(1.22) saturate(1.4) hue-rotate(15deg)';
+                video.style.filter = 'contrast(1.2) saturate(1.3) hue-rotate(15deg)';
             } else if (e.target.value === 'dark') {
-                video.style.filter = 'brightness(0.85) contrast(1.35)';
-            } else if (e.target.value === 'cyber') {
-                video.style.filter = 'contrast(1.15) brightness(1.08) drop-shadow(0 0 10px rgba(0,242,254,0.3))';
+                video.style.filter = 'brightness(0.85) contrast(1.3)';
             } else {
                 video.style.filter = 'none';
             }
         });
 
         /* ==========================================================
-           NAHRÁVANIE SÚBOROV & SPÚŠŤANIE VIDEÍ
+           NAHRÁVANIE SÚBOROV S UVOĽNENÍM PAMÄTE (ANTI-LAG)
         ========================================================== */
-        function startVideoSource(srcBlobUrl) {
+        function startVideoSource(newSourceUrl, isBlob = false) {
             if (!canPlayVideo()) {
                 document.getElementById('limit-modal').classList.add('active');
                 return;
             }
 
+            // 1. Zničenie predchádzajúceho HLS ak existoval
             if (hlsInstance) {
                 hlsInstance.destroy();
                 hlsInstance = null;
             }
 
-            video.src = srcBlobUrl;
+            // 2. KĽÚČOVÉ: Uvoľnenie starej pamäte RAM / VRAM
+            if (activeObjectUrl) {
+                URL.revokeObjectURL(activeObjectUrl);
+                activeObjectUrl = null;
+            }
+
+            if (isBlob) {
+                activeObjectUrl = newSourceUrl;
+            }
+
+            // 3. Reset indexu titulkov
+            subtitleIndex = 0;
+
+            // 4. Nastavenie a okamžité prehratie
+            video.src = newSourceUrl;
             emptyPlaceholder.style.display = 'none';
             video.play();
             playBtn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>';
+            
             registerPlay();
-            initAudioContext();
+            initAudioPipeline();
         }
 
-        // Lokálny súbor cez input
+        // Lokálny súbor
         fileInput.addEventListener('change', (e) => {
             const file = e.target.files[0];
             if (file) {
                 const objectUrl = URL.createObjectURL(file);
-                startVideoSource(objectUrl);
+                startVideoSource(objectUrl, true);
             }
         });
 
@@ -1407,12 +1525,12 @@
                     reader.readAsText(file);
                 } else {
                     const objectUrl = URL.createObjectURL(file);
-                    startVideoSource(objectUrl);
+                    startVideoSource(objectUrl, true);
                 }
             }
         });
 
-        // Spustenie URL / Streamu
+        // URL stream
         function loadUrlStream() {
             const url = document.getElementById('stream-url-input').value.trim();
             if (!url) return;
@@ -1428,9 +1546,14 @@
                 hlsInstance = null;
             }
 
+            if (activeObjectUrl) {
+                URL.revokeObjectURL(activeObjectUrl);
+                activeObjectUrl = null;
+            }
+
             if (url.includes('.m3u8')) {
                 if (Hls.isSupported()) {
-                    hlsInstance = new Hls();
+                    hlsInstance = new Hls({ enableWorker: true, lowLatencyMode: true });
                     hlsInstance.loadSource(url);
                     hlsInstance.attachMedia(video);
                     hlsInstance.on(Hls.Events.MANIFEST_PARSED, () => video.play());
@@ -1447,7 +1570,7 @@
             playBtn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>';
             closeModal('url-modal');
             registerPlay();
-            initAudioContext();
+            initAudioPipeline();
         }
 
         // Klávesové skratky
@@ -1465,8 +1588,10 @@
                 toggleCaptions();
             } else if (e.code === 'ArrowRight') {
                 video.currentTime += 5;
+                subtitleIndex = 0;
             } else if (e.code === 'ArrowLeft') {
                 video.currentTime -= 5;
+                subtitleIndex = 0;
             }
         });
     </script>
