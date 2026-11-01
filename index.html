@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SPOOKFLIX // Cyber-Halloween Edition</title>
+    <title>SPOOKFLIX // Cyber-Halloween Edition & AI Advisor</title>
     <!-- HLS.js pre prehrávanie sieťových video streamov (M3U8) -->
     <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,7 +20,7 @@
             --neon-cyan: #00f2fe;
             --cyan-glow: rgba(0, 242, 254, 0.35);
             --dark-bg: #060309;
-            --panel-bg: rgba(15, 9, 24, 0.85);
+            --panel-bg: rgba(15, 9, 24, 0.88);
             --border-glow: rgba(255, 106, 0, 0.25);
             --border-subtle: rgba(255, 255, 255, 0.08);
             --text-main: #f5f3f7;
@@ -143,6 +143,13 @@
             box-shadow: 0 0 18px var(--purple-glow);
         }
 
+        .btn-ai-nav {
+            background: linear-gradient(135deg, rgba(255, 106, 0, 0.25), rgba(157, 78, 221, 0.3));
+            border-color: var(--pumpkin);
+            color: #fff;
+            box-shadow: 0 0 14px var(--pumpkin-glow);
+        }
+
         .limit-badge {
             background: rgba(16, 9, 26, 0.75);
             border: 1px solid rgba(255, 106, 0, 0.3);
@@ -169,7 +176,7 @@
             50% { transform: scale(1.35); opacity: 0.55; }
         }
 
-        /* --- PREHRÁVAČ S HARDVÉROVOU AKCELERÁCIOU (ZERO-LAG) --- */
+        /* --- PREHRÁVAČ --- */
         .player-wrapper {
             margin: 86px auto 25px auto;
             width: 95%;
@@ -188,7 +195,6 @@
             contain: paint;
         }
 
-        /* Hardvérová GPU kompozícia bez lagov */
         video {
             width: 100%;
             height: 100%;
@@ -199,7 +205,6 @@
             will-change: transform;
         }
 
-        /* Placeholder */
         .empty-placeholder {
             position: absolute;
             inset: 0;
@@ -232,7 +237,7 @@
             50% { transform: translateY(-12px); }
         }
 
-        /* --- ŽIVÉ TITULKY (OPTIMALIZOVANÉ) --- */
+        /* --- ŽIVÉ TITULKY --- */
         .live-captions-overlay {
             position: absolute;
             bottom: 86px;
@@ -245,9 +250,7 @@
             transition: bottom 0.2s ease;
         }
 
-        .player-wrapper.show-controls .live-captions-overlay {
-            bottom: 106px;
-        }
+        .player-wrapper.show-controls .live-captions-overlay { bottom: 106px; }
 
         .live-caption-box {
             display: inline-block;
@@ -294,7 +297,7 @@
             padding-top: 4px;
         }
 
-        /* --- OVLÁDANIE --- */
+        /* --- OVLÁDANIE PREHRÁVAČA --- */
         .custom-controls {
             position: absolute;
             bottom: 0;
@@ -317,7 +320,6 @@
             pointer-events: auto;
         }
 
-        /* Časová os */
         .timeline-container {
             width: 100%;
             height: 18px;
@@ -336,9 +338,7 @@
             transition: height 0.15s ease;
         }
 
-        .timeline-container:hover .timeline-bar {
-            height: 8px;
-        }
+        .timeline-container:hover .timeline-bar { height: 8px; }
 
         .timeline-progress {
             position: absolute;
@@ -364,9 +364,7 @@
             transition: transform 0.15s ease;
         }
 
-        .timeline-container:hover .timeline-thumb {
-            transform: translateY(-50%) scale(1);
-        }
+        .timeline-container:hover .timeline-thumb { transform: translateY(-50%) scale(1); }
 
         .controls-row {
             display: flex;
@@ -408,17 +406,9 @@
             box-shadow: 0 0 14px var(--pumpkin-glow);
         }
 
-        .control-btn svg {
-            width: 20px;
-            height: 20px;
-            fill: currentColor;
-        }
+        .control-btn svg { width: 20px; height: 20px; fill: currentColor; }
 
-        .volume-container {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
+        .volume-container { display: flex; align-items: center; gap: 8px; }
 
         .volume-slider {
             -webkit-appearance: none;
@@ -448,28 +438,8 @@
             letter-spacing: 0.5px;
         }
 
-        .time-display .current-time {
-            color: #fff;
-            font-weight: 600;
-        }
+        .time-display .current-time { color: #fff; font-weight: 600; }
 
-        /* Ľahký spektrálny meter */
-        .audio-activity-meter {
-            display: inline-flex;
-            align-items: flex-end;
-            gap: 2px;
-            height: 14px;
-            padding: 0 3px;
-        }
-        .audio-bar {
-            width: 3px;
-            height: 3px;
-            background: var(--pumpkin);
-            border-radius: 2px;
-            transition: height 0.05s ease;
-        }
-
-        /* Zvýraznenie stavu slúchadiel */
         .headphone-badge {
             background: rgba(0, 242, 254, 0.15);
             border: 1px solid rgba(0, 242, 254, 0.35);
@@ -490,6 +460,21 @@
             box-shadow: 0 0 10px var(--cyan-glow);
         }
 
+        .audio-activity-meter {
+            display: inline-flex;
+            align-items: flex-end;
+            gap: 2px;
+            height: 14px;
+            padding: 0 3px;
+        }
+        .audio-bar {
+            width: 3px;
+            height: 3px;
+            background: var(--pumpkin);
+            border-radius: 2px;
+            transition: height 0.05s ease;
+        }
+
         /* --- SETTINGS MENU --- */
         .settings-menu {
             position: absolute;
@@ -508,9 +493,7 @@
             z-index: 40;
         }
 
-        .settings-menu.active {
-            display: flex;
-        }
+        .settings-menu.active { display: flex; }
 
         .settings-menu h4 {
             font-size: 12px;
@@ -532,10 +515,7 @@
             gap: 12px;
         }
 
-        .settings-option span {
-            color: var(--text-dim);
-            font-weight: 500;
-        }
+        .settings-option span { color: var(--text-dim); font-weight: 500; }
 
         .settings-option select {
             background: rgba(0, 0, 0, 0.65);
@@ -547,10 +527,6 @@
             cursor: pointer;
             font-family: var(--font-family);
             font-size: 12px;
-        }
-
-        .settings-option select:focus {
-            border-color: var(--pumpkin);
         }
 
         /* --- MODAL DIALOGY --- */
@@ -568,10 +544,7 @@
             transition: opacity 0.2s ease;
         }
 
-        .modal-overlay.active {
-            opacity: 1;
-            pointer-events: auto;
-        }
+        .modal-overlay.active { opacity: 1; pointer-events: auto; }
 
         .modal-card {
             background: linear-gradient(155deg, rgba(26, 14, 42, 0.96) 0%, rgba(10, 6, 18, 0.98) 100%);
@@ -585,22 +558,12 @@
             position: relative;
         }
 
-        .modal-card h2 {
-            font-size: 23px;
-            font-weight: 800;
-            margin-bottom: 10px;
-            color: #fff;
-        }
-
-        .modal-card p {
-            color: var(--text-dim);
-            font-size: 13.5px;
-            line-height: 1.55;
-            margin-bottom: 20px;
-        }
+        .modal-card h2 { font-size: 23px; font-weight: 800; margin-bottom: 10px; color: #fff; }
+        .modal-card p { color: var(--text-dim); font-size: 13.5px; line-height: 1.55; margin-bottom: 20px; }
 
         .modal-card input[type="text"],
-        .modal-card input[type="number"] {
+        .modal-card input[type="number"],
+        .modal-card input[type="password"] {
             width: 100%;
             padding: 12px 16px;
             background: rgba(0, 0, 0, 0.65);
@@ -648,6 +611,371 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
+
+        /* ==========================================================
+           PLÁVAJÚCA IKONA CHAT AI & CHAT WIDGET
+        ========================================================== */
+        .ai-fab-btn {
+            position: fixed;
+            bottom: 28px;
+            right: 32px;
+            z-index: 150;
+            background: linear-gradient(135deg, #ff6a00 0%, #9d4edd 100%);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 30px rgba(255, 106, 0, 0.45), 0 0 25px rgba(157, 78, 221, 0.4);
+            color: #fff;
+            padding: 12px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 800;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+            backdrop-filter: blur(8px);
+            transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .ai-fab-btn:hover {
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: 0 12px 35px rgba(255, 106, 0, 0.6), 0 0 30px rgba(0, 242, 254, 0.5);
+        }
+
+        .ai-fab-btn .spark-icon {
+            font-size: 19px;
+            animation: pulse-pump 2s infinite;
+        }
+
+        /* CHAT OKNO */
+        .ai-chat-window {
+            position: fixed;
+            bottom: 92px;
+            right: 32px;
+            width: 440px;
+            max-width: 92vw;
+            height: 640px;
+            max-height: 82vh;
+            background: rgba(14, 8, 23, 0.94);
+            border: 1px solid var(--pumpkin);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.9), 0 0 35px var(--purple-glow);
+            border-radius: 22px;
+            backdrop-filter: blur(22px);
+            z-index: 160;
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+            animation: slideUpChat 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .ai-chat-window.open { display: flex; }
+
+        @keyframes slideUpChat {
+            from { opacity: 0; transform: translateY(20px) scale(0.96); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        .ai-chat-header {
+            padding: 16px 18px;
+            background: linear-gradient(90deg, rgba(255, 106, 0, 0.18), rgba(157, 78, 221, 0.18));
+            border-bottom: 1px solid rgba(255, 106, 0, 0.25);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .ai-chat-title {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 800;
+            font-size: 15px;
+            color: #fff;
+        }
+
+        .ai-status-indicator {
+            width: 8px;
+            height: 8px;
+            background: var(--neon-cyan);
+            border-radius: 50%;
+            box-shadow: 0 0 8px var(--neon-cyan);
+        }
+
+        .ai-header-actions {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .ai-icon-btn {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: var(--text-dim);
+            cursor: pointer;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+        .ai-icon-btn:hover { color: #fff; border-color: var(--pumpkin); }
+
+        /* TABY A MODEL ENGINE PANEL */
+        .ai-provider-bar {
+            padding: 10px 14px;
+            background: rgba(0, 0, 0, 0.45);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .provider-tabs {
+            display: flex;
+            gap: 6px;
+        }
+
+        .provider-tab {
+            flex: 1;
+            padding: 5px 8px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 6px;
+            color: var(--text-dim);
+            font-size: 11px;
+            font-weight: 700;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.2s;
+        }
+
+        .provider-tab.active {
+            background: rgba(255, 106, 0, 0.25);
+            border-color: var(--pumpkin);
+            color: #fff;
+            box-shadow: 0 0 10px var(--pumpkin-glow);
+        }
+
+        .api-key-config-row {
+            display: flex;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .api-key-config-row input {
+            flex: 1;
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(255, 106, 0, 0.3);
+            border-radius: 6px;
+            padding: 6px 10px;
+            color: #fff;
+            font-size: 11.5px;
+            outline: none;
+            font-family: var(--font-mono);
+        }
+
+        .api-key-config-row button {
+            background: var(--pumpkin);
+            border: none;
+            color: #fff;
+            padding: 6px 10px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 700;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: background 0.2s;
+        }
+        .api-key-config-row button:hover { background: var(--pumpkin-light); }
+
+        .model-select-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+        }
+
+        .model-select-row select {
+            flex: 1;
+            background: rgba(0, 0, 0, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: var(--neon-cyan);
+            border-radius: 6px;
+            padding: 5px 8px;
+            font-size: 11px;
+            outline: none;
+            font-family: var(--font-mono);
+            cursor: pointer;
+        }
+
+        .web-search-toggle {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            background: rgba(0, 242, 254, 0.12);
+            border: 1px solid rgba(0, 242, 254, 0.3);
+            color: var(--neon-cyan);
+            font-size: 10px;
+            padding: 4px 8px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+        .web-search-toggle.disabled {
+            opacity: 0.5;
+            background: rgba(255,255,255,0.05);
+            border-color: rgba(255,255,255,0.1);
+            color: var(--text-dim);
+        }
+
+        /* SPÁVNY / CHAT OBSAH */
+        .ai-chat-messages {
+            flex: 1;
+            padding: 16px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            font-size: 13.5px;
+        }
+
+        .chat-bubble {
+            max-width: 86%;
+            padding: 10px 14px;
+            border-radius: 14px;
+            line-height: 1.5;
+            word-wrap: break-word;
+            user-select: text;
+        }
+
+        .chat-bubble.user {
+            align-self: flex-end;
+            background: linear-gradient(135deg, rgba(255, 106, 0, 0.35), rgba(157, 78, 221, 0.45));
+            border: 1px solid rgba(255, 106, 0, 0.4);
+            color: #fff;
+            border-bottom-right-radius: 3px;
+        }
+
+        .chat-bubble.ai {
+            align-self: flex-start;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #f0edf5;
+            border-bottom-left-radius: 3px;
+        }
+
+        .chat-bubble.ai .holiday-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            background: rgba(255, 106, 0, 0.2);
+            color: var(--pumpkin-light);
+            font-size: 11px;
+            padding: 2px 6px;
+            border-radius: 4px;
+            margin-bottom: 6px;
+            font-weight: 700;
+        }
+
+        /* ANIMÁCIA: THINKING... */
+        .thinking-bubble {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--pumpkin);
+            font-style: italic;
+            font-weight: 600;
+            font-size: 13px;
+            padding: 10px 14px;
+            background: rgba(255, 106, 0, 0.1);
+            border: 1px dashed var(--pumpkin);
+            border-radius: 12px;
+            width: fit-content;
+            animation: pulse-pump 1.8s infinite;
+        }
+
+        .thinking-dots span {
+            animation: blinkDots 1.4s infinite both;
+            font-size: 16px;
+            line-height: 0;
+        }
+        .thinking-dots span:nth-child(2) { animation-delay: 0.2s; }
+        .thinking-dots span:nth-child(3) { animation-delay: 0.4s; }
+
+        @keyframes blinkDots {
+            0%, 80%, 100% { opacity: 0; }
+            40% { opacity: 1; }
+        }
+
+        /* PRESET CHIPS */
+        .quick-chips {
+            padding: 0 14px 8px 14px;
+            display: flex;
+            gap: 6px;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+        .quick-chips::-webkit-scrollbar { height: 4px; }
+
+        .chip-btn {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            color: var(--text-dim);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .chip-btn:hover {
+            color: #fff;
+            border-color: var(--pumpkin);
+            background: rgba(255, 106, 0, 0.15);
+        }
+
+        /* INPUT PANEL */
+        .ai-chat-input-row {
+            padding: 12px 14px;
+            background: rgba(0, 0, 0, 0.55);
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            display: flex;
+            gap: 8px;
+        }
+
+        .ai-chat-input-row textarea {
+            flex: 1;
+            background: rgba(0, 0, 0, 0.7);
+            border: 1px solid rgba(255, 106, 0, 0.3);
+            border-radius: 10px;
+            padding: 9px 12px;
+            color: #fff;
+            font-size: 13px;
+            font-family: var(--font-family);
+            outline: none;
+            resize: none;
+            height: 42px;
+        }
+        .ai-chat-input-row textarea:focus { border-color: var(--pumpkin); }
+
+        .send-ai-btn {
+            background: linear-gradient(135deg, #ff6a00, #ff2a5f);
+            border: none;
+            color: #fff;
+            width: 44px;
+            height: 42px;
+            border-radius: 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            transition: transform 0.2s;
+        }
+        .send-ai-btn:hover { transform: scale(1.06); }
     </style>
 </head>
 <body>
@@ -670,6 +998,7 @@
             <button class="btn" onclick="openUrlModal()">🔗 Prehrať URL</button>
             <button class="btn" onclick="document.getElementById('file-input').click()">📂 Nahrať Video</button>
             <button class="btn btn-purple" onclick="openKeyModal()">🔑 Odomknúť Limit</button>
+            <button class="btn btn-ai-nav" onclick="toggleAiChat()">🤖 Chat AI Groq</button>
             
             <input type="file" id="file-input" accept="video/*,.mkv,.mp4,.webm,.ogg,.mov">
             <input type="file" id="sub-file-input" accept=".srt,.vtt">
@@ -693,21 +1022,20 @@
             </div>
         </div>
 
-        <!-- Počiatočný stav / Drag & Drop -->
+        <!-- Placeholder -->
         <div class="empty-placeholder" id="empty-placeholder" onclick="document.getElementById('file-input').click()">
             <div class="ghost-icon">👻</div>
             <h2 style="font-weight: 800; letter-spacing: 0.8px; font-size: 24px;">Presuň sem film alebo klikni a vyber súbor</h2>
             <p style="color: var(--text-dim); max-width: 500px; font-size: 13.5px;">
-                Optimalizované pre <strong>100% plynulé prehrávanie bez lagov</strong> cez hardvérovú GPU akceleráciu. Obsahuje <strong>zvukový ekvalizér pre slúchadlá</strong> a Živé Titulky Google.
+                Optimalizované pre <strong>100% plynulé prehrávanie bez lagov</strong> cez hardvérovú GPU akceleráciu. Obsahuje <strong>zvukový ekvalizér pre slúchadlá</strong>, Živé Titulky Google a <strong>AI Filmového Poradcu (Groq, OpenRouter, Gemini)</strong>.
             </p>
             <div class="pumpkin-badge">
-                <span>⚡ ZERO-LAG GPU ENGINE</span> // 4K 60FPS
+                <span>⚡ ZERO-LAG GPU + GROQ AI</span> // 4K 60FPS
             </div>
         </div>
 
         <!-- OVLÁDANIE V ŠTÝLE NETFLIX -->
         <div class="custom-controls" id="custom-controls">
-            <!-- Priebeh videa -->
             <div class="timeline-container" id="timeline-container">
                 <div class="timeline-bar">
                     <div class="timeline-progress" id="timeline-progress">
@@ -718,11 +1046,9 @@
 
             <div class="controls-row">
                 <div class="left-controls">
-                    <!-- Play / Pause -->
                     <button class="control-btn" id="play-btn" title="Prehrať / Pozastaviť (Medzerník)">
                         <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                     </button>
-                    <!-- +/- 10s -->
                     <button class="control-btn" id="backward-btn" title="Dozadu 10s">
                         <svg viewBox="0 0 24 24"><path d="M12.5 8c-2.65 0-5.05 1-6.9 2.6L2 7v9h9l-3.62-3.62c1.39-1.16 3.16-1.88 5.12-1.88 3.54 0 6.55 2.31 7.6 5.5l2.37-.78C21.08 11.03 17.15 8 12.5 8z"/></svg>
                     </button>
@@ -730,7 +1056,6 @@
                         <svg viewBox="0 0 24 24"><path d="M11.5 8c2.65 0 5.05 1 6.9 2.6L22 7v9h-9l3.62-3.62c-1.39-1.16-3.16-1.88-5.12-1.88-3.54 0-6.55 2.31-7.6 5.5l-2.37-.78C2.92 11.03 6.85 8 11.5 8z"/></svg>
                     </button>
                     
-                    <!-- Volume -->
                     <div class="volume-container">
                         <button class="control-btn" id="volume-btn" title="Stlmiť (M)">
                             <svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
@@ -738,17 +1063,14 @@
                         <input type="range" class="volume-slider" id="volume-slider" min="0" max="1" step="0.05" value="1">
                     </div>
 
-                    <!-- Čas -->
                     <div class="time-display">
                         <span class="current-time" id="current-time">00:00</span> / <span id="duration-time">00:00</span>
                     </div>
 
-                    <!-- Prepínač Zvuku Slúchadiel priamo na paneli -->
                     <div class="headphone-badge" id="headphone-quick-btn" title="Klikni pre prepnutie režimu zvuku pre slúchadlá">
                         🎧 <span id="headphone-status-text">Voice Boost: VYP</span>
                     </div>
 
-                    <!-- Audio Frequency Indicator -->
                     <div class="audio-activity-meter" id="audio-activity-meter" title="Snímanie interného audia">
                         <div class="audio-bar" id="bar1"></div>
                         <div class="audio-bar" id="bar2"></div>
@@ -758,12 +1080,10 @@
                 </div>
 
                 <div class="right-controls">
-                    <!-- CC ŽIVÉ TITULKY TOGGLE -->
                     <button class="control-btn" id="cc-btn" title="Zapnúť / Vypnúť Živé Titulky (C)">
                         <svg viewBox="0 0 24 24"><path d="M19 4H5c-1.11 0-2 .9-2 2v12c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-8 7H9.5v-.5h-2v3h2V13H11v1c0 .55-.45 1-1 1H7c-.55 0-1-.45-1-1v-4c0-.55.45-1 1-1h3c.55 0 1 .45 1 1v1zm7 0h-1.5v-.5h-2v3h2V13H18v1c0 .55-.45 1-1 1h-3c-.55 0-1-.45-1-1v-4c0-.55.45-1 1-1h3c.55 0 1 .45 1 1v1z"/></svg>
                     </button>
-                    <!-- Nahrať SRT / VTT -->
-                    <button class="control-btn" onclick="document.getElementById('sub-file-input').click()" title="Nahrať vlastné titulky (.srt / .vtt) k videu">
+                    <button class="control-btn" onclick="document.getElementById('sub-file-input').click()" title="Nahrať vlastné titulky (.srt / .vtt)">
                         <svg viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
                     </button>
                     <button class="control-btn" id="pip-btn" title="Obraz v obraze (PiP)">
@@ -785,7 +1105,6 @@
                     <span style="font-size: 10px; color: var(--neon-cyan);">STUDIO DSP</span>
                 </h4>
                 
-                <!-- Zvukový procesor pre slúchadlá -->
                 <div class="settings-option">
                     <span>Zvuk na slúchadlách:</span>
                     <select id="audio-mode-select">
@@ -845,6 +1164,78 @@
                     </select>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <!-- ==========================================================
+         PLÁVAJÚCA IKONA CHAT AI GROQ & OKNO
+    ========================================================== -->
+    <div class="ai-fab-btn" onclick="toggleAiChat()">
+        <span class="spark-icon">⚡</span>
+        <span>Chat AI Poradca</span>
+    </div>
+
+    <div class="ai-chat-window" id="ai-chat-window">
+        <!-- Header -->
+        <div class="ai-chat-header">
+            <div class="ai-chat-title">
+                <span class="ai-status-indicator"></span>
+                <span>Spookflix AI Filmový Poradca</span>
+            </div>
+            <div class="ai-header-actions">
+                <button class="ai-icon-btn" title="Vyčistiť chat" onclick="clearAiChat()">🗑️</button>
+                <button class="ai-icon-btn" title="Zatvoriť" onclick="toggleAiChat()">&times;</button>
+            </div>
+        </div>
+
+        <!-- Výber Providera & API Kľúče -->
+        <div class="ai-provider-bar">
+            <div class="provider-tabs">
+                <div class="provider-tab active" id="tab-groq" onclick="setAiProvider('groq')">Groq (Rýchle)</div>
+                <div class="provider-tab" id="tab-openrouter" onclick="setAiProvider('openrouter')">OpenRouter (Free)</div>
+                <div class="provider-tab" id="tab-google" onclick="setAiProvider('google')">Google Gemini</div>
+            </div>
+
+            <!-- API Key input -->
+            <div class="api-key-config-row">
+                <input type="password" id="ai-api-key-input" placeholder="Vlož API kľúč pre Groq...">
+                <button onclick="syncAiModels()">🔄 Načítať Modely</button>
+            </div>
+
+            <!-- Model Dropdown + Web Search Switch -->
+            <div class="model-select-row">
+                <select id="ai-model-select">
+                    <option value="llama-3.3-70b-versatile">llama-3.3-70b-versatile (Groq)</option>
+                    <option value="deepseek-r1-distill-llama-70b">deepseek-r1-distill-llama-70b</option>
+                    <option value="llama-3.1-8b-instant">llama-3.1-8b-instant</option>
+                </select>
+                <div class="web-search-toggle" id="web-search-btn" onclick="toggleWebSearch()" title="Vyhľadávanie aktuálnych informácií na internete">
+                    🌐 Web: <span id="web-search-status">ZAP</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Správy -->
+        <div class="ai-chat-messages" id="ai-chat-messages">
+            <div class="chat-bubble ai">
+                <div class="holiday-tag">🌍 Svetové Sviatky & Kalendár Aktívny</div>
+                Ahoj! Som tvoj AI filmový poradca s pripojením na web. Viem, aké sú po celom svete sviatky (Halloween, Dušičky, Vianoce, Solstícium, Deň mŕtvych atď.) a podľa toho ti vyberiem perfektný film. 
+                <br><br>
+                Zadaj svoj <strong>Groq</strong>, <strong>OpenRouter</strong> alebo <strong>Google API kľúč</strong> a klikni na <em>Načítať Modely</em>, alebo sa ma rovno niečo spýtaj!
+            </div>
+        </div>
+
+        <!-- Rýchle otázky / Chips -->
+        <div class="quick-chips">
+            <button class="chip-btn" onclick="askQuickPrompt('Aké sú dnes alebo tento mesiac vo svete sviatky a aké filmy k nim odporúčaš?')">🎉 Filmy podľa sviatkov</button>
+            <button class="chip-btn" onclick="askQuickPrompt('Odporuč mi 3 najlepšie novšie filmové pecky a horory na večer.')">🍿 Najlepšie filmy na večer</button>
+            <button class="chip-btn" onclick="askQuickPrompt('Aké sci-fi novinky vyšli v poslednej dobe? Vyhľadaj ich.')">🚀 Sci-Fi novinky</button>
+        </div>
+
+        <!-- Vstupná lišta -->
+        <div class="ai-chat-input-row">
+            <textarea id="ai-user-input" placeholder="Spýtaj sa na film, náladu, sviatky alebo stream..." onkeydown="handleAiInputKey(event)"></textarea>
+            <button class="send-ai-btn" onclick="sendAiMessage()" title="Odoslať správu">➤</button>
         </div>
     </div>
 
@@ -1035,23 +1426,19 @@
                 const AudioContextClass = window.AudioContext || window.webkitAudioContext;
                 audioCtx = new AudioContextClass();
 
-                // Zdroj zvuku z videa
                 sourceNode = audioCtx.createMediaElementSource(video);
 
-                // 1. Filter pre vytiahnutie ľudskej reči (1800 Hz až 3200 Hz)
                 voiceFilter = audioCtx.createBiquadFilter();
                 voiceFilter.type = 'peaking';
                 voiceFilter.frequency.value = 2500;
                 voiceFilter.Q.value = 1.3;
-                voiceFilter.gain.value = 7.5; // +7.5 dB pre jasné dialógy
+                voiceFilter.gain.value = 7.5;
 
-                // 2. Filter pre skrotenie nepríjemného dunenia na slúchadlách
                 bassFilter = audioCtx.createBiquadFilter();
                 bassFilter.type = 'lowshelf';
                 bassFilter.frequency.value = 200;
                 bassFilter.gain.value = -3.5;
 
-                // 3. Dynamický kompresor (nočné kino - zrovná výbuchy a tichý šepot)
                 compressor = audioCtx.createDynamicsCompressor();
                 compressor.threshold.value = -24;
                 compressor.knee.value = 25;
@@ -1059,15 +1446,12 @@
                 compressor.attack.value = 0.003;
                 compressor.release.value = 0.25;
 
-                // 4. Zosilnenie
                 gainNode = audioCtx.createGain();
                 gainNode.gain.value = 1.0;
 
-                // 5. Ľahký analyzér spektra
                 analyser = audioCtx.createAnalyser();
                 analyser.fftSize = 32;
 
-                // Prepojenie reťazca
                 sourceNode.connect(voiceFilter);
                 voiceFilter.connect(bassFilter);
                 bassFilter.connect(compressor);
@@ -1089,28 +1473,24 @@
             if (!voiceFilter || !gainNode) return;
 
             if (mode === 'voice') {
-                // Hlasy v slúchadlách
                 voiceFilter.gain.value = 8.5;
                 bassFilter.gain.value = -4.0;
                 gainNode.gain.value = 1.15;
                 headphoneStatusText.innerText = 'Voice Boost: ZAP';
                 headphoneQuickBtn.style.borderColor = 'var(--neon-cyan)';
             } else if (mode === 'night') {
-                // Nočné kino
                 voiceFilter.gain.value = 4.0;
                 bassFilter.gain.value = -6.0;
                 gainNode.gain.value = 1.0;
                 headphoneStatusText.innerText = 'Nočné Kino';
                 headphoneQuickBtn.style.borderColor = 'var(--witch-purple)';
             } else if (mode === 'boost') {
-                // 200% Extra
                 voiceFilter.gain.value = 2.0;
                 bassFilter.gain.value = 0;
                 gainNode.gain.value = 2.0;
                 headphoneStatusText.innerText = 'Boost: 200%';
                 headphoneQuickBtn.style.borderColor = 'var(--pumpkin)';
             } else {
-                // Vypnuté / Pôvodný
                 voiceFilter.gain.value = 0;
                 bassFilter.gain.value = 0;
                 gainNode.gain.value = 1.0;
@@ -1121,7 +1501,6 @@
 
         audioModeSelect.addEventListener('change', (e) => applyAudioMode(e.target.value));
         
-        // Rýchly prepínač kliknutím na badge
         headphoneQuickBtn.addEventListener('click', () => {
             initAudioPipeline();
             const modes = ['voice', 'night', 'boost', 'off'];
@@ -1129,7 +1508,6 @@
             applyAudioMode(modes[nextIdx]);
         });
 
-        // Ľahký vizualizér (iba 25 fps, aby neuberal výkon z 4K 60FPS videa)
         let lastMeterTime = 0;
         function startThrottledVisualizer() {
             const dataArray = new Uint8Array(analyser.frequencyBinCount);
@@ -1141,7 +1519,7 @@
             ];
 
             function loop(now) {
-                if (now - lastMeterTime > 40) { // ~25 FPS limit
+                if (now - lastMeterTime > 40) {
                     lastMeterTime = now;
                     if (!video.paused && analyser) {
                         analyser.getByteFrequencyData(dataArray);
@@ -1161,7 +1539,7 @@
         ========================================================== */
         let captionsEnabled = false;
         let subtitleCues = [];
-        let subtitleIndex = 0; // O(1) ukazovateľ namiesto hľadania cez tisíce prvkov
+        let subtitleIndex = 0;
         let currentTargetLang = 'sk';
         let translationCache = new Map();
         let lastSubtitleText = '';
@@ -1258,7 +1636,6 @@
                     }
                 }
             });
-            // Zoradenie pre bleskové indexovanie
             subtitleCues.sort((a, b) => a.start - b.start);
         }
 
@@ -1293,7 +1670,7 @@
 
         let controlsTimeout;
         let hlsInstance = null;
-        let activeObjectUrl = null; // Pre uvoľňovanie pamäte (Stop lagom)
+        let activeObjectUrl = null;
 
         function hideControls() {
             if (!video.paused) {
@@ -1331,7 +1708,7 @@
 
         document.getElementById('backward-btn').addEventListener('click', () => {
             video.currentTime -= 10;
-            subtitleIndex = 0; // reset indexu
+            subtitleIndex = 0;
         });
         document.getElementById('forward-btn').addEventListener('click', () => {
             video.currentTime += 10;
@@ -1345,16 +1722,13 @@
             return `${String(min).padStart(2, '0')}:${String(sec).padStart(2, '0')}`;
         }
 
-        // Bleskový timeupdate bez blokovania vlákna
         video.addEventListener('timeupdate', () => {
             const cur = video.currentTime;
             const dur = video.duration || 1;
             timelineProgress.style.width = `${(cur / dur) * 100}%`;
             currentTimeEl.innerText = formatTime(cur);
 
-            // Bleskové O(1) spracovanie titulkov
             if (captionsEnabled && subtitleCues.length > 0) {
-                // Oprava indexu pri pretáčaní
                 if (subtitleIndex >= subtitleCues.length || cur < subtitleCues[subtitleIndex].start) {
                     subtitleIndex = 0;
                 }
@@ -1389,7 +1763,6 @@
             subtitleIndex = 0;
         });
 
-        // Hlasitosť
         volumeSlider.addEventListener('input', (e) => {
             video.volume = e.target.value;
             video.muted = false;
@@ -1463,13 +1836,11 @@
                 return;
             }
 
-            // 1. Zničenie predchádzajúceho HLS ak existoval
             if (hlsInstance) {
                 hlsInstance.destroy();
                 hlsInstance = null;
             }
 
-            // 2. KĽÚČOVÉ: Uvoľnenie starej pamäte RAM / VRAM
             if (activeObjectUrl) {
                 URL.revokeObjectURL(activeObjectUrl);
                 activeObjectUrl = null;
@@ -1479,10 +1850,7 @@
                 activeObjectUrl = newSourceUrl;
             }
 
-            // 3. Reset indexu titulkov
             subtitleIndex = 0;
-
-            // 4. Nastavenie a okamžité prehratie
             video.src = newSourceUrl;
             emptyPlaceholder.style.display = 'none';
             video.play();
@@ -1492,7 +1860,6 @@
             initAudioPipeline();
         }
 
-        // Lokálny súbor
         fileInput.addEventListener('change', (e) => {
             const file = e.target.files[0];
             if (file) {
@@ -1501,7 +1868,6 @@
             }
         });
 
-        // Drag & Drop
         playerWrapper.addEventListener('dragover', (e) => {
             e.preventDefault();
             emptyPlaceholder.classList.add('dragover');
@@ -1530,7 +1896,6 @@
             }
         });
 
-        // URL stream
         function loadUrlStream() {
             const url = document.getElementById('stream-url-input').value.trim();
             if (!url) return;
@@ -1573,9 +1938,8 @@
             initAudioPipeline();
         }
 
-        // Klávesové skratky
         window.addEventListener('keydown', (e) => {
-            if (['input', 'select'].includes(document.activeElement.tagName.toLowerCase())) return;
+            if (['input', 'textarea', 'select'].includes(document.activeElement.tagName.toLowerCase())) return;
 
             if (e.code === 'Space') {
                 e.preventDefault();
@@ -1594,6 +1958,344 @@
                 subtitleIndex = 0;
             }
         });
+
+        /* ==========================================================
+           CHAT AI ENGINE (GROQ, OPENROUTER, GOOGLE GEMINI, WEB SEARCH)
+        ========================================================== */
+        let activeAiProvider = 'groq';
+        let webSearchEnabled = true;
+        let chatMessagesHistory = [
+            {
+                role: "system",
+                content: `Si SPOOKFLIX AI - inteligentný filmový poradca a expert na svetovú kinematografiu. 
+Poznáš všetky svetové sviatky (Halloween, Dušičky, Día de los Muertos, Vianoce, Hanukkah, Diwali, Deň vďakyvzdania, Valentín, Deň nezávislosti, atď.). 
+Tvojou úlohou je odporúčať skvelé filmy podľa nálady, sviatkov, žánrov a ročného obdobia. 
+Dnešný dátum je: ${new Date().toLocaleDateString('sk-SK')}. 
+Odpovedaj priateľsky, štýlovo a formátuj odporúčania prehľadne (Názov filmu, rok, žáner, krátke lákavé zhrnutie prečo si ho pozrieť). Vždy píš v slovenskom jazyku.`
+            }
+        ];
+
+        const aiChatWindow = document.getElementById('ai-chat-window');
+        const aiApiKeyInput = document.getElementById('ai-api-key-input');
+        const aiModelSelect = document.getElementById('ai-model-select');
+        const aiChatMessages = document.getElementById('ai-chat-messages');
+        const aiUserInput = document.getElementById('ai-user-input');
+        const webSearchBtn = document.getElementById('web-search-btn');
+        const webSearchStatus = document.getElementById('web-search-status');
+
+        // Načítanie uložených kľúčov
+        function loadSavedAiKeys() {
+            const savedKey = localStorage.getItem(`spookflix_api_${activeAiProvider}`) || '';
+            aiApiKeyInput.value = savedKey;
+        }
+        loadSavedAiKeys();
+
+        function toggleAiChat() {
+            aiChatWindow.classList.toggle('open');
+            if (aiChatWindow.classList.contains('open')) {
+                aiUserInput.focus();
+            }
+        }
+
+        function clearAiChat() {
+            aiChatMessages.innerHTML = `
+                <div class="chat-bubble ai">
+                    <div class="holiday-tag">🌍 Svetové Sviatky & Kalendár Aktívny</div>
+                    Chat bol vyčistený. O akých filmoch alebo sviatkoch sa chceš porozprávať?
+                </div>
+            `;
+            chatMessagesHistory = [chatMessagesHistory[0]];
+        }
+
+        function setAiProvider(provider) {
+            activeAiProvider = provider;
+            document.querySelectorAll('.provider-tab').forEach(t => t.classList.remove('active'));
+            document.getElementById(`tab-${provider}`).classList.add('active');
+
+            if (provider === 'groq') {
+                aiApiKeyInput.placeholder = "Vlož Groq API kľúč (gsk_...)...";
+            } else if (provider === 'openrouter') {
+                aiApiKeyInput.placeholder = "Vlož OpenRouter kľúč (sk-or-v1-...)...";
+            } else if (provider === 'google') {
+                aiApiKeyInput.placeholder = "Vlož Google Gemini API kľúč (AIzaSy...)...";
+            }
+
+            loadSavedAiKeys();
+            populateDefaultModelsForProvider(provider);
+        }
+
+        function populateDefaultModelsForProvider(provider) {
+            aiModelSelect.innerHTML = '';
+            if (provider === 'groq') {
+                const defs = [
+                    { id: 'llama-3.3-70b-versatile', name: 'llama-3.3-70b-versatile (Odporúčané)' },
+                    { id: 'deepseek-r1-distill-llama-70b', name: 'deepseek-r1-distill-llama-70b' },
+                    { id: 'llama-3.1-8b-instant', name: 'llama-3.1-8b-instant (Bleskové)' },
+                    { id: 'mixtral-8x7b-32768', name: 'mixtral-8x7b-32768' }
+                ];
+                defs.forEach(m => addModelOption(m.id, m.name));
+            } else if (provider === 'openrouter') {
+                const defs = [
+                    { id: 'meta-llama/llama-3.3-70b-instruct:free', name: 'Llama 3.3 70B (FREE)' },
+                    { id: 'deepseek/deepseek-r1:free', name: 'DeepSeek R1 (FREE)' },
+                    { id: 'google/gemini-2.0-flash-exp:free', name: 'Gemini 2.0 Flash (FREE)' },
+                    { id: 'qwen/qwen-2.5-72b-instruct:free', name: 'Qwen 2.5 72B (FREE)' }
+                ];
+                defs.forEach(m => addModelOption(m.id, m.name));
+            } else if (provider === 'google') {
+                const defs = [
+                    { id: 'gemini-2.0-flash', name: 'Gemini 2.0 Flash' },
+                    { id: 'gemini-1.5-flash', name: 'Gemini 1.5 Flash' },
+                    { id: 'gemini-1.5-pro', name: 'Gemini 1.5 Pro' }
+                ];
+                defs.forEach(m => addModelOption(m.id, m.name));
+            }
+        }
+
+        function addModelOption(id, name) {
+            const opt = document.createElement('option');
+            opt.value = id;
+            opt.innerText = name;
+            aiModelSelect.appendChild(opt);
+        }
+
+        function toggleWebSearch() {
+            webSearchEnabled = !webSearchEnabled;
+            if (webSearchEnabled) {
+                webSearchStatus.innerText = 'ZAP';
+                webSearchBtn.classList.remove('disabled');
+            } else {
+                webSearchStatus.innerText = 'VYP';
+                webSearchBtn.classList.add('disabled');
+            }
+        }
+
+        // SYNCHRONIZÁCIA MODELOV Z API
+        async function syncAiModels() {
+            const apiKey = aiApiKeyInput.value.trim();
+            if (!apiKey) {
+                alert("Najprv vlož platný API kľúč pre vybranú službu!");
+                return;
+            }
+
+            localStorage.setItem(`spookflix_api_${activeAiProvider}`, apiKey);
+            const originalBtnText = event.target.innerText;
+            event.target.innerText = "⏳ Načítavam...";
+
+            try {
+                if (activeAiProvider === 'groq') {
+                    const res = await fetch('https://api.groq.com/openai/v1/models', {
+                        headers: { 'Authorization': `Bearer ${apiKey}` }
+                    });
+                    const data = await res.json();
+                    if (data.data && Array.isArray(data.data)) {
+                        aiModelSelect.innerHTML = '';
+                        data.data
+                            .filter(m => m.id.includes('llama') || m.id.includes('deepseek') || m.id.includes('mixtral') || m.id.includes('gemma'))
+                            .forEach(m => addModelOption(m.id, `${m.id} (Groq)`));
+                        alert(`✅ Úspešne zosynchronizovaných ${aiModelSelect.options.length} modelov od Groq!`);
+                    } else {
+                        throw new Error(data.error?.message || "Neplatná odpoveď od Groq");
+                    }
+                } else if (activeAiProvider === 'openrouter') {
+                    const res = await fetch('https://openrouter.ai/api/v1/models', {
+                        headers: { 'Authorization': `Bearer ${apiKey}` }
+                    });
+                    const data = await res.json();
+                    if (data.data && Array.isArray(data.data)) {
+                        aiModelSelect.innerHTML = '';
+                        // Najprv free modely
+                        const freeModels = data.data.filter(m => m.id.includes(':free'));
+                        freeModels.forEach(m => addModelOption(m.id, `🎁 ${m.name || m.id}`));
+                        
+                        data.data.slice(0, 30).forEach(m => {
+                            if (!m.id.includes(':free')) addModelOption(m.id, m.name || m.id);
+                        });
+                        alert(`✅ Načítaných ${aiModelSelect.options.length} modelov z OpenRouter (vrátane Free)!`);
+                    }
+                } else if (activeAiProvider === 'google') {
+                    const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models?key=${apiKey}`);
+                    const data = await res.json();
+                    if (data.models && Array.isArray(data.models)) {
+                        aiModelSelect.innerHTML = '';
+                        data.models
+                            .filter(m => m.name.includes('gemini'))
+                            .forEach(m => {
+                                const cleanId = m.name.replace('models/', '');
+                                addModelOption(cleanId, m.displayName || cleanId);
+                            });
+                        alert(`✅ Načítané Gemini modely od Google!`);
+                    } else {
+                        throw new Error(data.error?.message || "Chyba Google API");
+                    }
+                }
+            } catch (err) {
+                alert(`Chyba pri synchronizácii: ${err.message}`);
+            } finally {
+                event.target.innerText = originalBtnText;
+            }
+        }
+
+        // Bleskové vyhľadávanie na webe pre najnovšie info a sviatky
+        async function fetchWebContext(query) {
+            try {
+                const searchUrl = `https://api.duckduckgo.com/?q=${encodeURIComponent(query)}&format=json&origin=*`;
+                const res = await fetch(searchUrl);
+                const data = await res.json();
+                let summary = "";
+                if (data.AbstractText) summary += data.AbstractText + " ";
+                if (data.RelatedTopics && data.RelatedTopics.length > 0) {
+                    summary += data.RelatedTopics.slice(0, 2).map(t => t.Text || "").join(" ");
+                }
+                return summary.trim() ? `[Aktuálne webové informácie k otázke: "${summary.trim()}"]` : "";
+            } catch (e) {
+                return "";
+            }
+        }
+
+        function handleAiInputKey(e) {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                sendAiMessage();
+            }
+        }
+
+        function askQuickPrompt(text) {
+            aiUserInput.value = text;
+            sendAiMessage();
+        }
+
+        async function sendAiMessage() {
+            const userText = aiUserInput.value.trim();
+            if (!userText) return;
+
+            const apiKey = aiApiKeyInput.value.trim();
+            const selectedModel = aiModelSelect.value;
+
+            // 1. Vloženie používateľskej správy do chatu
+            appendChatMessage(userText, 'user');
+            aiUserInput.value = '';
+
+            // 2. Zobrazenie stavu "Thinking..."
+            const thinkingEl = document.createElement('div');
+            thinkingEl.className = 'thinking-bubble';
+            thinkingEl.innerHTML = `
+                <span>Thinking...</span>
+                <div class="thinking-dots"><span>.</span><span>.</span><span>.</span></div>
+            `;
+            aiChatMessages.appendChild(thinkingEl);
+            aiChatMessages.scrollTop = aiChatMessages.scrollHeight;
+
+            if (!apiKey) {
+                setTimeout(() => {
+                    thinkingEl.remove();
+                    appendChatMessage(`⚠️ Pre odpoveď cez model <strong>${selectedModel}</strong> najprv vlož svoj API kľúč (${activeAiProvider.toUpperCase()}) hore a stlač <em>Načítať Modely</em>. Bezplatný kľúč si môžeš vytvoriť na console.groq.com alebo openrouter.ai zadarmo.`, 'ai');
+                }, 600);
+                return;
+            }
+
+            try {
+                let contextNote = "";
+                if (webSearchEnabled) {
+                    const webInfo = await fetchWebContext(userText);
+                    if (webInfo) contextNote = webInfo;
+                }
+
+                // Pridanie sviatkového kontextu
+                const currentMonth = new Date().toLocaleString('sk-SK', { month: 'long' });
+                const fullPrompt = `${userText} ${contextNote ? `\n\n${contextNote}` : ''} \n(Poznámka: Aktuálny mesiac je ${currentMonth}).`;
+
+                chatMessagesHistory.push({ role: "user", content: fullPrompt });
+
+                let aiResponseText = "";
+
+                if (activeAiProvider === 'groq') {
+                    const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${apiKey}`
+                        },
+                        body: JSON.stringify({
+                            model: selectedModel,
+                            messages: chatMessagesHistory,
+                            temperature: 0.7,
+                            max_tokens: 1024
+                        })
+                    });
+                    const resJson = await response.json();
+                    if (resJson.choices && resJson.choices[0]) {
+                        aiResponseText = resJson.choices[0].message.content;
+                    } else {
+                        throw new Error(resJson.error?.message || "Chyba pripojenia k Groq");
+                    }
+                } else if (activeAiProvider === 'openrouter') {
+                    const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${apiKey}`,
+                            'HTTP-Referer': window.location.href,
+                            'X-Title': 'Spookflix AI'
+                        },
+                        body: JSON.stringify({
+                            model: selectedModel,
+                            messages: chatMessagesHistory,
+                            max_tokens: 1024
+                        })
+                    });
+                    const resJson = await response.json();
+                    if (resJson.choices && resJson.choices[0]) {
+                        aiResponseText = resJson.choices[0].message.content;
+                    } else {
+                        throw new Error(resJson.error?.message || "Chyba OpenRouter API");
+                    }
+                } else if (activeAiProvider === 'google') {
+                    const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${selectedModel}:generateContent?key=${apiKey}`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            contents: [{
+                                parts: [{ text: `Systémová inštrukcia: ${chatMessagesHistory[0].content}\n\nUžívateľ: ${fullPrompt}` }]
+                            }]
+                        })
+                    });
+                    const resJson = await response.json();
+                    if (resJson.candidates && resJson.candidates[0]) {
+                        aiResponseText = resJson.candidates[0].content.parts[0].text;
+                    } else {
+                        throw new Error(resJson.error?.message || "Chyba Google Gemini API");
+                    }
+                }
+
+                thinkingEl.remove();
+                appendChatMessage(formatAiMarkdown(aiResponseText), 'ai', true);
+                chatMessagesHistory.push({ role: "assistant", content: aiResponseText });
+
+            } catch (err) {
+                thinkingEl.remove();
+                appendChatMessage(`❌ Chyba AI odpovede: ${err.message}`, 'ai');
+            }
+        }
+
+        function appendChatMessage(text, role, isHtml = false) {
+            const bubble = document.createElement('div');
+            bubble.className = `chat-bubble ${role}`;
+            if (isHtml) {
+                bubble.innerHTML = text;
+            } else {
+                bubble.innerText = text;
+            }
+            aiChatMessages.appendChild(bubble);
+            aiChatMessages.scrollTop = aiChatMessages.scrollHeight;
+        }
+
+        function formatAiMarkdown(text) {
+            return text
+                .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                .replace(/\*(.*?)\*/g, '<em>$1</em>')
+                .replace(/\n/g, '<br>');
+        }
     </script>
 </body>
 </html>
